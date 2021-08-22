@@ -1,0 +1,55 @@
+
+<tr>
+    <td colspan="2">This</td>
+    <td>Little</td>
+    <td>Piggy</td>
+    <td>Went</td>
+    <td>To</td>
+</tr>
+<tr>
+    <td colspan="4">This</td>
+    <td rowspan="3">Little</td>
+    <td>Piggy</td>
+</tr>
+<tr>
+    <td rowspan="2">This</td>
+    <td>Little</td>
+    <td>Piggy</td>
+    <td>Went</td>
+    <td>To</td>
+</tr>
+<tr>
+    <td>Little</td>
+    <td>Piggy</td>
+    <td>Went</td>
+    <td>To</td>
+</tr>
+</table>
+
+<table>
+    <tbody>
+    <tr th:if="${cards.empty}">
+        <td colspan="2"> No Profiles found </td>
+    </tr>
+    <tr th:each="card : ${cards}">
+
+        <td colspan="4" rowspan="5"><p><--- photo ---></p></td>
+    <tr>
+        <td>பெயர்: <span th:text="${card.name}"> </span></td>
+        <td>வயது: <span th:text="${card.age}"> </span></td>
+        <td>படிப்பு: <span th:text="${card.qualification}"> </span></td>
+    </tr>
+    <tr>
+        <td>வேலை: <span th:text="${card.profession}"> </span></td>
+        <td>சொந்த ஊர்: <span th:text="${card.nativeVillage}"> </span></td>
+        <td>சொந்த மாவட்டம்: <span th:text="${card.nativeDistrict}"> </span></td>
+    </tr>
+    <td>வசிக்கும் மாவட்டம்: <span th:text="${card.livingDistrict}"> </span></td>
+    <td>மாத வருமானம்: <span th:text="${card.montlyIncome}"> </span></td>
+    <td>சொந்த தொழில்: <span th:text="${card.isOwnBusiness}"> </span></td>
+    <td>குலம்: <span th:text="${card.kulam}"> </span></td>
+    <td>குலதெய்வ கோவில்: <span th:text="${card.kulaDeivaKovilSamy}"> </span></td>
+    <td>குலதெய்வ ஊர்: <span th:text="${card.kulaDeivaKovilOor}"> </span></td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+table td input  {
+    width: 300%;
+    padding: 15px;
+   
+ } 
+ table td select  {
+    width: 300%;
+    padding: 15px;
+    
+ } 
+ table td label {
+   
+     text-align: left;
+ 
+ }
+  
+ table {
+     margin: 10%;
+     border: none ;
+  
+ }
+ 
+ label {
+     color: black;
+     font-weight: bold;
+     display: block;
+     font-size: large;
+
+ }
+ table:first-child {
+border-top-width: 1px;
+margin-top: 0;
+}
+button {
+background-color: #4CAF50; /* Green */
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+}

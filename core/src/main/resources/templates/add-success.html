@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/style2.css">
+    <title>Success</title>
+</head>
+<body>
+
+<header>
+    <div class="topnav" id="myTopnav">
+        <a href="/index.html" >முகப்பு</a>
+        <a href="/add-profile.html" class="active">புதிய பதிவு</a>
+        <a href="/search-profile.html">தேடல்</a>
+        <a href="#about">எம்மை பற்றி</a>
+        <a href="#about">எம்மை தொடர்பு கொள்ள</a>
+    </div>
+</header>
+<div class="container">
+
+    <h2 style="align:center;"> பதிவு வெற்றிகரமாக முடிந்தது </h2><br>
+<div class="table">
+        <div class="row">
+            <div class="cell">
+    <label> பதிவு எண்:</label>
+            </div>
+            <div class="cell"><p th:text=" ${ID}"></p></div>
+        </div>
+</div>
+
+</div>
+</body>
+</html>

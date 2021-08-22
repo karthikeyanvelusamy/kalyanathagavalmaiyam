@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header>
+    <link rel="stylesheet" href="/styles/style2.css">
+    <style type="text/css">
+#ProfilePage
+{
+    /* Move it off the top of the page, then centre it horizontally */
+    margin: 50px auto;
+    width: 635px;
+
+/* For visibility. Delete me */
+border: 1px solid red;
+}
+
+#LeftCol
+{
+    /* Move it to the left */
+    float: left;
+
+    width: 200px;
+    text-align: center;
+
+    /* Move it away from the content */
+    margin-right: 20px;
+
+/* For visibility. Delete me */
+border: 1px solid brown;
+}
+
+#Photo
+{
+    /* Width and height of photo container */
+    width: 200px;
+    height: 200px;
+
+/* For visibility. Delete me */
+border: 1px solid green;
+}
+
+#PhotoOptions
+{
+    text-align: center;
+    width: 200px;
+
+/* For visibility. Delete me */
+border: 1px solid brown;
+}
+
+#Info
+{
+    width: 400px;
+    text-align: center;
+
+    /* Move it to the right */
+    float: right;
+
+/* For visibility. Delete me */
+border: 1px solid blue;
+}
+
+#Info strong
+{
+    /* Give it a width */
+    display: inline-block;
+    width: 100px;
+
+/* For visibility. Delete me */
+border: 1px solid orange;
+}
+
+#Info span
+{
+    /* Give it a width */
+    display: inline-block;
+    width: 250px;
+
+/* For visibility. Delete me */
+border: 1px solid purple;
+}
+#Info #first {
+float: left;
+}
+
+#Info #first {
+float: left;
+}
+</style>
+</header>
+<body>
+<header>
+    <div class="topnav" id="myTopnav">
+        <a href="#home" class="active">முகப்பு</a>
+        <a href="add-profile.html">புதிய பதிவு</a>
+        <a href="search-profile.html">தேடல்</a>
+        <a href="#about">எம்மை பற்றி</a>
+        <a href="#about">எம்மை தொடர்பு கொள்ள</a>
+        <a th:href="@{/profile/fetch/all}">அணைத்து படிவங்களும்</a>
+    </div>
+</header>
+
+    <div class="index-data">
+        <p>வணக்கம்</p>
+        <p>தமிழ்த் திருமண தகவல் மையத்திற்கு வரவேற்கிறோம்</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <link rel="stylesheet" href="/styles/style2.css">
+
+    <meta charset="UTF-8">
+    <title>தேடல்</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script  th:inline="javascript">
+
+    function submitForm() {
+    alert("hai");
+    $('#search_form').submit(function( event ) {
+    alert("hai");
+     event.preventDefault();
+    debugger;
+    var search = { };
+    search["location"]  = { "lat": $("#lat").val(), "lng": $("#lat").val()};
+<!--    search["location"]["lng"] =$("#lng").val();-->
+    search["radiusKM"]= $("#radiusKM").val();
+
+  // Stop form from submitting normally
+  event.preventDefault();
+alert("hai");
+    $.ajax({
+    url : "/profile/fetch/api",
+    type: "POST",
+    data: JSON.stringify(search),
+    dataType: 'json',
+    cache: false,
+    success: function(data, textStatus, jqXHR)
+    {
+          $('#results-block').html(data);
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+ 
+    }
+});
+});
+}
+    </script>
+</head>
+<body>
+
+<header>
+    <div class="topnav" id="myTopnav">
+        <a href="index.html">முகப்பு</a>
+        <a href="add-profile.html" >புதிய பதிவு</a>
+        <a href="search-profile.html" class="active">தேடல்</a>
+        <a href="#about">எம்மை பற்றி</a>
+        <a href="#about">எம்மை தொடர்பு கொள்ள</a>
+    </div>
+</header>
+<button text="Hello" th:onclick="'javascript:submitForm()'">adf</button>
+<div class="small-form">
+    <form  th:object="${searchCriteria}" method="post" name="search_form" id="search_form">
+    <div class="table">
+        <div class="row">
+            <div class="cell"   style="vertical-align:bottom;text-align:center;padding-bottom:20px;">
+                <label  >தேடுதல் மையம் (Location)</label>
+            </div>
+            <div class="cell" style="font-style: italic;">
+                <label style="clear: left;width: 100%;margin: 0 0 1.5em 0;padding: 0;">lat</label>
+
+                <input type="text" id="lat" name="location.lat" th:field="*{location.lat}" >
+            </div>
+            <div class="cell" style="font-style: italic;">
+                <label style="clear: left;width: 100%;margin: 0 0 1.5em 0;padding: 0;">lng</label>
+
+                <input type="text" id="lng" name="location.lng" th:field="*{location.lng}">
+            </div>
+
+            <div class="cell v1">
+
+            </div>
+            <div class="cell" style="padding:20px;">
+
+            </div>
+            <div class="cell"   style="vertical-align:bottom;text-align:center;padding-bottom:20px;">
+                <label>தேடல் வளைய மட்டம் (Radius)</label>
+
+            </div>
+            <div class="cell" >
+                <label>KM</label>
+                <input type="text" id="radiusKM" name="radiusKM" th:field="*{radiusKM}">
+
+
+            </div>
+            <div class="cell" style="padding:20px">
+            </div>
+            <div class="cell"   style="vertical-align:bottom;text-align:center;">
+                <button text="தேடுக" th:onclick="'javascript:submitForm()'">தேடுக</button>
+            </div>
+
+        </div>
+    </div>
+    </form>
+
+    <div   th:fragment id="results-block">
+    </div>
+
+</div>
+</body>
+</html>

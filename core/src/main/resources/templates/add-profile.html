@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="/styles/style2.css">
+    <title>
+        Adding profile
+    </title>
+</head>
+<body>
+
+    <header>
+    <div class="topnav" id="myTopnav">
+        <a href="index.html" >முகப்பு</a>
+        <a href="#registration" class="active">புதிய பதிவு</a>
+        <a href="search-profile.html">தேடல்</a>
+        <a href="#about">எம்மை பற்றி</a>
+        <a href="#about">எம்மை தொடர்பு கொள்ள</a>
+    </div>
+    </header>
+    <div class="container">
+        <form  th:action="@{/profile/add}" th:object="${profileEntry}" method="post"  name="registration_form" id="registration_form">
+            <table >
+                <tr><td></td></tr>
+                <tr>
+                    <td>
+                        <label>பெயர்</label>
+                    </td>
+                    <td>
+                        <input type="text" id="name" name="name" th:field="*{name}" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>தந்தை பெயர்</label>
+                    </td>
+                    <td>
+                        <input type="text" id="fatherName" name="fatherName" th:field="*{fatherName}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>தாயார் பெயர்</label>
+                    </td>
+                    <td>
+                        <input type="text" id="motherName" name="motherName" th:field="*{motherName}"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>பாலினம்</label>
+                    </td>
+                    <td>
+                        <select name="gender" id="gender" style ="width: 70%; padding: 15px; margin: ;" th:field="*{gender}">
+                            <option value="MALE" selected>ஆண்</option>
+                            <option value="FEMALE">பெண்</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>சொந்த மாவட்டம்</label>
+                    </td>
+                    <td>
+                        <input type="text" id="nativeDistrict" name="nativeDistrict" th:field="*{nativeDistrict}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>சொந்த ஊர்</label>
+                    </td>
+                    <td>
+                        <input type="text" id="nativeVillage" name="nativeVillage" th:field="*{nativeVillage}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>நிலநேர்கோடுகள் (lat)</label>
+                    </td>
+                    <td>
+                        <input type="text" id="latitude" name="latitude" th:field="*{latitude}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>நிலநிரைகோடுகள் (longitude)</label>
+                    </td>
+                    <td>
+                        <input type="text" id="longitude" name="longitude" th:field="*{longitude}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>வசிக்கும் மாவட்டம்</label>
+                    </td>
+                    <td>
+                        <input type="text" id="livingDistrict" name="livingDistrict" th:field="*{livingDistrict}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>வேலை செய்யும் இடம்</label>
+                    </td>
+                    <td>
+                        <input type="text" id="workLocation" name="workLocation" th:field="*{workLocation}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>பிறந்த தேதி</label>
+                    </td>
+                    <td>
+                        <input type="date" id="dob" name="dob" th:field="*{dob}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>உயரம்</label>
+                    </td>
+                    <td>
+                        <input type="number" id="height" name="height" th:field="*{height}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>தொழில்</label>
+                    </td>
+                    <td>
+                        <input type="text" id="profession" name="profession" th:field="*{profession}">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>மாத வருமானம்</label>
+                    </td>
+                    <td>
+                        <input type="number" id="monthlyIncome" name="monthlyIncome" th:field="*{monthlyIncome}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>வேலை செய்பவரா?</label>
+                    </td>
+                    <td>
+                        <select name="isWorkingProfessional" id="isWorkingProfessional" th:field="*{WorkingProfessional}">
+                            <option th:value="true" selected>ஆம்</option>
+                            <option th:value="false" >இல்லை</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>சொந்த தொழில்?</label>
+                    </td>
+                    <td>
+                        <select name="isOwnBusiness" id="isOwnBusiness" th:field="*{OwnBusiness}">
+                            <option th:value="true" selected>ஆம்</option>
+                            <option th:value="false" selected>இல்லை</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>படிப்பு</label>
+                    </td>
+                    <td>
+                        <input type="text" id="qualification" name="qualification" th:field="*{qualification}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>குலம்</label>
+                    </td>
+                    <td>
+                        <input type="text" id="kulam" name="kulam" th:field="*{kulam}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>குலதெய்வ சாமி</label>
+                    </td>
+                    <td>
+                        <input type="text" id="kulaDeivamSamy" name="kulaDeivamSamy" th:field="*{kulaDeivamSamy}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>குலதெய்வ சாமி ஊர்</label>
+                    </td>
+                    <td>
+                        <input type="text" id="kulaDeivamSamyOor" name="kulaDeivamSamyOor" th:field="*{kulaDeivamSamyOor}">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>வீடு வகை</label>
+                    </td>
+                    <td>
+                        <input type="text" id="houseType" name="houseType" th:field="*{houseType}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>வீடு மதிப்பு (ரூபாய்)</label>
+                    </td>
+                    <td>
+                        <input type="number" id="houseValue" name="houseValue" th:field="*{houseValue}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>விவசாய நிலம் உண்டா?</label>
+                    </td>
+                    <td>
+                        <select name="isAgriLandOwned" id="isAgriLandOwned" th:field="*{AgriLandOwned}">
+                            <option value="true" selected>ஆம்</option>
+                            <option value="false" selected>இல்லை</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>விவசாய நிலம் (ஏக்கர்)</label>
+                    </td>
+                    <td>
+                        <input type="number" id="agriLand" name="agriLand" th:field="*{agriLand}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>விவசாய நிலம் மதிப்பு (ரூபாய்)</label>
+                    </td>
+                    <td>
+                        <input type="number" id="agriLandValue" name="agriLandValue" th:field="*{agriLandValue}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>சைட் நிலம் (செண்ட்)</label>
+                    </td>
+                    <td>
+                        <input type="number" id="siteLand" name="siteLand" th:field="*{agriLandValue}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>சைட் நிலம் மதிப்பு (ரூபாய்)</label>
+                    </td>
+                    <td>
+                        <input type="number" id="siteLandValue" name="siteLandValue" th:field="*{siteLandValue}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>இதர சொத்துக்கள்</label>
+                    </td>
+                    <td>
+                        <input type="text" id="otherAssets" name="otherAssets" th:field="*{otherAssets}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>இதர சொத்து மதிப்பு (ரூபாய்)</label>
+                    </td>
+                    <td>
+                        <input type="number" id="otherAssetsValue" name="otherAssetsValue" th:field="*{otherAssetsValue}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>இதர வருமானம் (ரூபாய்)</label>
+                    </td>
+                    <td>
+                        <input type="number" id="otherIncomeFromAssets" name="otherIncomeFromAssets" th:field="*{otherIncomeFromAssets}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>பிறந்த நேரம்</label>
+                    </td>
+                    <td>
+                        <input type="time" id="time" name="time" min="00:00" max="23:59" th:field="*{time}">
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td>
+                        <label>நட்சத்திரம்</label>
+                    </td>
+                    <td>
+                        <input type="number" id="natchathiram" name="natchathiram" min=1 max=27 th:field="*{time}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>ராசி</label>
+                    </td>
+                    <td>
+                        <input type="number" id="rasi" name="rasi" min=1 max=12 th:field="*{rasi}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>இராகு கேது</label>
+                    </td>
+                    <td>
+                        <select name="Ragukethu" id="Ragukethu" th:field="*{Ragukethu}">
+                            <option value="true" selected>ஆம்</option>
+                            <option value="false" selected>இல்லை</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>செவ்வாய்</label>
+                    </td>
+                    <td>
+                        <select name="Chevvai" id="Chevvai" th:field="*{Chevvai}">
+                            <option value="true" selected>ஆம்</option>
+                            <option value="false" selected>இல்லை</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>பரிகார செவ்வாய்</label>
+                    </td>
+                    <td>
+                        <select name="ParikaraChevvai" id="ParikaraChevvai" th:field="*{ParikaraChevvai}">
+                            <option value="true" selected>ஆம்</option>
+                            <option value="false" selected>இல்லை</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>தொடர்பு எண்1</label>
+                    </td>
+                    <td>
+                        <input type="text" id="contactNumber1" name="contactNumber1" th:field="*{contactNumber1}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>தொடர்பு எண்2</label>
+                    </td>
+                    <td>
+                        <input type="text" id="contactNumber2" name="contactNumber2" th:field="*{contactNumber2}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>தொடர்பு நபர் பெயர்</label>
+                    </td>
+                    <td>
+                        <input type="text" id="contactPerson" name="contactPerson" th:field="*{contactPerson}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>பதிவு செய்தவர் பெயர்</label>
+                    </td>
+                    <td>
+                        <input type="text" id="profileCreatedBy" name="profileCreatedBy" th:field="*{profileCreatedBy}">
+                    </td>
+                </tr>
+              
+                <tr>
+                    <td>
+                         <button type="reset" id="reset">RESET</button>
+                    </td>
+                    <td>
+                        <button type="submit" id="submit" onclick="submit()">SUBMIT</button>
+                    </td>
+                </tr>
+        </table>
+        </form>
+    </div>
+ 
+
+</body>
+</html>

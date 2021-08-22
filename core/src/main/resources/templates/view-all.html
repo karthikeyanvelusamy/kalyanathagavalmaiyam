@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>படிவங்கள்</title>
+<style>
+
+table {
+  border: 1px solid black;
+  table-layout: fixed;
+
+
+}
+   img {
+    max-width: 100%;
+    height: auto;
+}
+
+.item {
+    width: 220px;
+    min-height: 120px;
+    max-height: auto;
+    float: left;
+    margin: 3px;
+    padding: 3px;
+    border-style: solid;
+}
+
+.details {
+padding: 100px;
+border-style: solid;
+}
+
+.key {
+float: left;
+
+
+}
+.value{
+float: right;
+}
+
+</style>
+
+</head>
+<body>
+<div >
+    <div class="item">
+     <img th:src="@{/images/jaggu.png}">
+    </div>
+    <div class="details">
+        <table  border="1">
+            <tr>
+                <div class="header">
+                <td>
+                    <div class="key" >
+                    <p>பெயர்:</p>
+                    </div>
+                    <div class="value">
+                        <p>ஜெகதீஸ்வரன்</p>
+                    </div>
+                </td>
+                </div>
+
+                <div class="header">
+                    <td>
+                        <div class="key">
+                            <p> வயது:</p>
+                        </div>
+                        <div class="value">
+                            <p>21</p>
+                        </div>
+                    </td>
+                </div>
+
+            </tr>
+            <tr>
+                <div class="header">
+                    <td>
+                        <div class="key">
+                            <p> வேலை:</p>
+                        </div>
+                        <div class="value">
+                            <p>மென்பொறியாளர்</p>
+                        </div>
+                    </td>
+                </div>
+                <div class="header">
+                    <td>
+                        <div class="key">
+                            <p>குலம்: </p>
+                        </div>
+                        <div class="value">
+                            <p>ஆந்தை</p>
+                        </div>
+                    </td>
+                </div>
+
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
+
+
+

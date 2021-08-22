@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>தேடல்</title>
+</head>
+<body>
+<table>
+
+    <tbody>
+    <tr th:if="${cards.empty}">
+        <td colspan="2"> No Profiles found </td>
+    </tr>
+    <tr th:each="card : ${cards}">
+        <td><-- PHOTO --></td>
+        <td><span th:text="${card.name}"> </span></td>
+        <td><span th:text="${card.age}"> </span></td>
+
+        <td><a th:href="@{/profile/get/} + ${card.matrimonyID}" th:text="${card.matrimonyID}"></a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
