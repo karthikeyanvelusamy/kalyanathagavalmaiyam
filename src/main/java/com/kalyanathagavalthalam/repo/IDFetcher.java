@@ -22,7 +22,7 @@ import org.yaml.snakeyaml.events.Event;
 import java.util.Map;
 import java.util.Optional;
 
-@Repository
+
 public abstract class IDFetcher implements MongoOperations {
 
   public int fetch() {
