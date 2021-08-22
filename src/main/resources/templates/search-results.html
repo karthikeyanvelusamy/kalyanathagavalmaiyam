@@ -1,24 +1,38 @@
-<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>தேடல்</title>
-</head>
 <body>
-<table>
+<div id="search-result" th:fragment="data">
+<table border="1">
 
     <tbody>
-    <tr th:if="${cards.empty}">
+    <tr th:if="${profiles.empty}">
         <td colspan="2"> No Profiles found </td>
     </tr>
-    <tr th:each="card : ${cards}">
-        <td><-- PHOTO --></td>
-        <td><span th:text="${card.name}"> </span></td>
-        <td><span th:text="${card.age}"> </span></td>
-
-        <td><a th:href="@{/profile/get/} + ${card.matrimonyID}" th:text="${card.matrimonyID}"></a></td>
-    </tr>
+    <table th:each="profile : ${profiles}" border="1" >
+        <tr>
+            <td rowspan="6" colspan="2"> -- PHOTO -- </td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td th:text="${profile.name}"></td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td th:text="${profile.age}"></td>
+        </tr>
+        <tr>
+            <td>profession</td>
+            <td th:text="${profile.profession}" ></td>
+        </tr>
+        <tr>
+            <td>Qualification</td>
+            <td th:text="${profile.qualification}"></td>
+        </tr>
+        <tr>
+            <td>Full Profile</td>
+            <td><a th:href="@{/profile/get/} + ${profile.matrimonyID}" th:text="${profile.matrimonyID}"></a></td>
+        </tr>
+    </table>
     </tbody>
 </table>
+</div>
 </body>
-</html>

@@ -6,14 +6,13 @@
     <meta charset="UTF-8">
     <title>தேடல்</title>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script  th:inline="javascript">
+    <script type="text/javascript" th:inline="javascript">
 
     function submitForm() {
-    alert("hai");
+
     $('#search_form').submit(function( event ) {
-    alert("hai");
      event.preventDefault();
-    debugger;
+
     var search = { };
     search["location"]  = { "lat": $("#lat").val(), "lng": $("#lat").val()};
 <!--    search["location"]["lng"] =$("#lng").val();-->
@@ -21,24 +20,26 @@
 
   // Stop form from submitting normally
   event.preventDefault();
-alert("hai");
+
     $.ajax({
-    url : "/profile/fetch/api",
+    url : "/profile/fetch",
     type: "POST",
     data: JSON.stringify(search),
-    dataType: 'json',
+    dataType: 'html',
     cache: false,
     success: function(data, textStatus, jqXHR)
     {
-          $('#results-block').html(data);
+           $("#resultsblock").html(data);
+
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
- 
+      $("#resultsblock").html(errorThrown);
     }
 });
 });
 }
+
     </script>
 </head>
 <body>
@@ -52,7 +53,11 @@ alert("hai");
         <a href="#about">எம்மை தொடர்பு கொள்ள</a>
     </div>
 </header>
-<button text="Hello" th:onclick="'javascript:submitForm()'">adf</button>
+<div align="center" id="content-container">
+    <a href="#" class="click cgreen">Main Balance</a>
+    <a href="#" class="click cgreen">PayPal</a>
+    <a href="#" class="click cgreen">AlertPay</a>
+</div>
 <div class="small-form">
     <form  th:object="${searchCriteria}" method="post" name="search_form" id="search_form">
     <div class="table">
@@ -97,9 +102,10 @@ alert("hai");
     </div>
     </form>
 
-    <div   th:fragment id="results-block">
-    </div>
 
 </div>
+<div id="resultsblock" >
+</div>
+
 </body>
 </html>

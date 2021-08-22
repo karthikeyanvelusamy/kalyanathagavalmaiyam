@@ -65,7 +65,7 @@ public class ProfileController {
     List<ProfileCard> results = profileService
       .fetchProfiles(criteria);
 
-   ModelAndView model = new ModelAndView("search-profile::resultsList");
+   ModelAndView model = new ModelAndView("search-results::data");
     model.addObject("profiles",results);
 
     return model;
