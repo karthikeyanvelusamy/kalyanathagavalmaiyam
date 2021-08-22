@@ -6,6 +6,7 @@ import com.kalyanathagavalthalam.bean.ProfileCard;
 import com.kalyanathagavalthalam.bean.SearchCriteria;
 import com.kalyanathagavalthalam.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -22,14 +23,14 @@ public class ProfileRepoImpl  {
 
 
   @Autowired
-  private MongoTemplate mongoTemplate;
+  private MongoOperations mongoOperations;
 
   @Autowired
   private LocationService locationService;
 
   public void add(Profile profile, ProfileCard profileCard) {
-    mongoTemplate.insert(profile,PROFILE_COLLECTION);
-    mongoTemplate.insert(profileCard, PROFILE_CARDS_COLLECTION);
+    mongoOperations.insert(profile,PROFILE_COLLECTION);
+    mongoOperations.insert(profileCard, PROFILE_CARDS_COLLECTION);
   }
 
   public List<ProfileCard> fetch(SearchCriteria criteria) {
@@ -44,12 +45,12 @@ public class ProfileRepoImpl  {
     Query query = new Query();
     query.addCriteria(dbCriteria);
     query.fields().include("matrimonyID");
-    List<String> matIds = mongoTemplate.find(query,Profile.class,PROFILE_COLLECTION)
+    List<String> matIds = mongoOperations.find(query,Profile.class,PROFILE_COLLECTION)
       .stream().map(Profile::getMatrimonyID).collect(Collectors.toList());
 
     query = new Query();
     query.addCriteria(Criteria.where("matrimonyID").in(matIds));
-    List<ProfileCard> profileCards = mongoTemplate
+    List<ProfileCard> profileCards = mongoOperations
       .find(query,ProfileCard.class,"profile_cards");
 
     return profileCards;
@@ -60,7 +61,7 @@ public class ProfileRepoImpl  {
     Query query = new Query();
     query.addCriteria(Criteria.where("matrimonyID").is(id));
 
-   return mongoTemplate.findOne(query,Profile.class, "profiles");
+   return mongoOperations.findOne(query,Profile.class, "profiles");
   }
 
   private void buildCriteria(SearchCriteria criteria, Criteria dbCriteria) {
@@ -114,6 +115,6 @@ public class ProfileRepoImpl  {
     Criteria dbCriteria = Criteria.where("matrimonyID").is(id);
     Query query = new Query();
     query.addCriteria(dbCriteria);
-    return mongoTemplate.findOne(query, ProfileCard.class);
+    return mongoOperations.findOne(query, ProfileCard.class);
   }
 }

@@ -22,22 +22,25 @@ import org.yaml.snakeyaml.events.Event;
 import java.util.Map;
 import java.util.Optional;
 
+@Repository
+public class IDFetcher   {
 
-public abstract class IDFetcher implements MongoOperations {
+  @Autowired
+  private MongoOperations mongoOperations;
 
   public int fetch() {
-    DBIDHOLDER  currentID =  findOne(new Query(), DBIDHOLDER.class);;
+    DBIDHOLDER  currentID =  mongoOperations.findOne(new Query(), DBIDHOLDER.class);;
     if(currentID == null) {
       currentID = new DBIDHOLDER();
     }
     int id = currentID.getTodayId();
     currentID.setTodayId(id+1);
-    findAndReplace(new Query(), currentID);
+    mongoOperations.findAndReplace(new Query(), currentID);
     return id;
   }
 
   public void reset() {
-    findAndReplace(new Query(), new DBIDHOLDER());
+    mongoOperations.findAndReplace(new Query(), new DBIDHOLDER());
   }
 
 }
