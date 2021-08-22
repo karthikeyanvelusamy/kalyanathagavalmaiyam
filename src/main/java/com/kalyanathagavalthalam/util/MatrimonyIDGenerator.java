@@ -4,7 +4,9 @@ import com.kalyanathagavalthalam.repo.IDFetcher;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Calendar;
@@ -13,12 +15,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class MatrimonyIDGenerator {
 
-  private static final MatrimonyIDGenerator INSTANCE = new MatrimonyIDGenerator();
-
-  AtomicInteger idGen = new AtomicInteger();
-
   @Autowired
   private IDFetcher idFetcher;
+
+  private static MatrimonyIDGenerator INSTANCE;
+
+  AtomicInteger idGen = new AtomicInteger();
 
   public synchronized String generateID() {
     Calendar calendar = Calendar.getInstance();
@@ -36,5 +38,10 @@ public class MatrimonyIDGenerator {
 
   public static MatrimonyIDGenerator getInstance() {
     return INSTANCE;
+  }
+
+  @PostConstruct
+  public void setInstance() {
+    INSTANCE =  this;
   }
 }

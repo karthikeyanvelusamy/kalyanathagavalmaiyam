@@ -1,5 +1,6 @@
 package com.kalyanathagavalthalam.configuration;
 
+import com.kalyanathagavalthalam.repo.IDFetcher;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -16,8 +17,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 @Configuration
 public class AppConfig {
-
-
 
 
   @Bean
@@ -37,4 +36,7 @@ public class AppConfig {
   public MongoOperations mongoOperations(MongoClient client){
     return new MongoTemplate(client,"kalyana_thagaval_thalam");
   }
+
+
+
 }
