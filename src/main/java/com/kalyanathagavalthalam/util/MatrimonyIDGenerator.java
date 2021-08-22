@@ -28,7 +28,7 @@ public class MatrimonyIDGenerator {
 
       FileUtils.write(file, String.valueOf(curret+1), "UTF-8");
     }catch (Exception e) {
-      throw new RuntimeException("Error while creating Unique ID ");
+      throw new RuntimeException("Error while creating Unique ID ",e);
     }
 
     String zero = (idGen.get() >= 10)?"":"0";
